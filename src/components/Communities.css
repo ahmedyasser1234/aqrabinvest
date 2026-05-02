@@ -1,0 +1,127 @@
+.communities {
+  padding: 0 0 3rem 0;
+  background: var(--white);
+}
+
+.communities .eyebrow { color: var(--primary-hover); }
+.communities .section-desc { color: rgba(0, 0, 0, 0.7); }
+.communities .section-title { color: var(--black); }
+
+.communities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 0;
+}
+
+.community-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.community-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.community-card__img {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+}
+
+.community-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.community-card:hover .community-card__img img {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.community-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(4px);
+}
+
+.community-card:hover .community-card__overlay {
+  opacity: 1;
+}
+
+.community-card__btn {
+  background: var(--primary);
+  color: var(--black);
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.community-card__btn:hover {
+  background: var(--white);
+}
+
+.community-card__info {
+  padding: 1.8rem;
+  position: relative;
+}
+
+.community-card__info::before {
+  content: 'FILE_NO: 842-1A';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: monospace;
+  font-size: 8px;
+  color: var(--primary);
+  opacity: 0.3;
+}
+
+.community-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+  color: var(--black);
+}
+
+.community-card__loc {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-hover);
+  margin-bottom: 0.8rem;
+}
+
+.community-card__text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+@media (max-width: 1100px) {
+  .communities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .communities__grid {
+    grid-template-columns: 1fr;
+  }
+}

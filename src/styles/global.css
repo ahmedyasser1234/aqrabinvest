@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Outfit:wght@300;400;600;700;800;900&display=swap');
+
+:root {
+  --primary: #a2dd00; /* New Brand Color */
+  --primary-hover: #8fc200;
+  --black: #000000;
+  --white: #FFFFFF;
+  --bg-dark: #050505;
+  --charcoal: #1a1a1a;
+  --font-heading: 'Outfit', 'Cairo', sans-serif;
+  --font-body: 'Outfit', 'Cairo', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Technical Identity Variables */
+  --grid-color: rgba(162, 221, 0, 0.05);
+  --line-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-dark);
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--white);
+  font-family: var(--font-body);
+  direction: rtl;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.technical-line {
+  position: absolute;
+  background: var(--primary);
+  opacity: 0.3;
+}
+
+.technical-line--h { height: 1px; width: 100%; }
+.technical-line--v { width: 1px; height: 100%; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+/* Architectural Layering */
+.arch-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Architectural Transitions */
+.section-divider {
+  height: 100px;
+  background: var(--bg-dark);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -100px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-divider--white {
+  background: var(--white);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+section {
+  position: relative;
+  padding: 0 0 40px 0;
+}
+
+.section-header {
+  margin-bottom: 0.5rem;
+  text-align: right;
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--primary);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.section-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* Light Mode Overrides for Sections on White BG */
+.about {
+  background: var(--white);
+  color: var(--black);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.about .eyebrow { color: var(--primary-hover); }
+.about .section-desc { color: rgba(0, 0, 0, 0.7); }
+.about .section-title { color: var(--black); }
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+

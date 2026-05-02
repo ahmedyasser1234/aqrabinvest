@@ -1,0 +1,120 @@
+.lands {
+  padding: 0 0 3rem 0;
+  background: var(--bg-dark);
+  position: relative;
+}
+
+.lands .eyebrow { color: var(--primary); }
+.lands .section-desc { color: rgba(255, 255, 255, 0.7); }
+.lands .section-title { color: var(--white); }
+
+.lands__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 0;
+}
+
+.land-card {
+  background: var(--charcoal);
+  border: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.land-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+}
+
+.land-card__img {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
+.land-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.land-card:hover .land-card__img img {
+  transform: scale(1.1);
+}
+
+.land-card__badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--primary);
+  color: var(--black);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  z-index: 5;
+  border-radius: 4px;
+}
+
+.land-card__content {
+  padding: 2rem;
+}
+
+.land-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.land-card__size {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-hover);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed var(--primary);
+}
+
+.land-card__text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2rem;
+}
+
+.land-card__btn {
+  background: var(--black);
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.land-card__btn:hover {
+  background: var(--primary);
+  color: var(--black);
+  transform: scale(1.02);
+}
+
+@media (max-width: 1100px) {
+  .lands__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .lands__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

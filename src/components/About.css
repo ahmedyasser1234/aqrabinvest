@@ -1,0 +1,159 @@
+.about {
+  padding: 1rem 0;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.about__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.about__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 2.5rem;
+  text-align: justify;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.about__corporate {
+  position: relative;
+}
+
+.about__para {
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #444;
+  margin-bottom: 3rem;
+  text-align: justify;
+}
+
+.about__stats {
+  display: flex;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary-hover);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about__readmore {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.4s ease;
+  border-radius: 4px;
+}
+
+.about__readmore:hover {
+  background: var(--primary);
+  color: var(--black);
+  transform: scale(1.05);
+}
+
+.about__ceo {
+  position: relative;
+}
+
+.about__ceo-box {
+  padding: 4rem 3rem;
+  color: var(--white);
+  border-right: 6px solid var(--primary);
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/ceo_bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.technical-mark-box {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.about__ceo-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.about__ceo-text {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+}
+
+.about__ceo-text::before {
+  content: '“';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 5rem;
+  opacity: 0.1;
+  font-family: serif;
+}
+
+.about__ceo-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about__stats {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
