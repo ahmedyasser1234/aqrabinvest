@@ -1,9 +1,12 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import './Contact.css'
 
 export default function Contact() {
+  const [status, setStatus] = useState('idle') // idle, sending, success
   const handleSubmit = (e) => {
     e.preventDefault();
+    setStatus('sending');
     const form = e.target;
     const formData = new FormData(form);
     
@@ -13,10 +16,13 @@ export default function Contact() {
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => {
-        alert('شكراً لتواصلك معنا. سنقوم بالرد عليك في أقرب وقت ممكن.')
-        form.reset()
+        setStatus('success');
+        form.reset();
       })
-      .catch((error) => alert('عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.'))
+      .catch((error) => {
+        setStatus('idle');
+        alert('عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.');
+      })
   }
 
   return (
@@ -108,14 +114,43 @@ export default function Contact() {
                 <label>رسالتك</label>
                 <textarea name="message" rows="4" placeholder="كيف يمكننا مساعدتك؟"></textarea>
               </div>
-              <button type="submit" className="contact__submit">
-                إرسال الرسالة
+              <button type="submit" className="contact__submit" disabled={status === 'sending'}>
+                {status === 'sending' ? 'جاري الإرسال...' : 'إرسال الرسالة'}
                 <span className="btn-technical-mark">+</span>
               </button>
             </motion.form>
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {status === 'success' && (
+          <motion.div 
+            className="success-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setStatus('idle')}
+          >
+            <motion.div 
+              className="success-modal glass"
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3>تم الإرسال بنجاح!</h3>
+              <p>شكراً لتواصلك مع أقربلك للاستثمار. سيقوم فريقنا بالتواصل معك في أقرب وقت ممكن.</p>
+              <button className="success-modal-btn" onClick={() => setStatus('idle')}>إغلاق</button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

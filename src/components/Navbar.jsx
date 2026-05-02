@@ -12,6 +12,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [menuOpen])
+
   const navLinks = [
     { to: 'about', label: 'عن الشركة' },
     { to: 'whyus', label: 'لماذا نحن' },
