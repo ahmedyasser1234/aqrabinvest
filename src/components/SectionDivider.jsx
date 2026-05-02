@@ -6,7 +6,7 @@ export const SectionDivider = ({ type = 'dark-to-white' }) => {
   return (
     <div style={{ 
       height: '0', 
-      backgroundColor: isDarkToWhite ? 'var(--white)' : 'var(--bg-dark)', 
+      backgroundColor: 'transparent', 
       position: 'relative', 
       overflow: 'visible',
       zIndex: 10
