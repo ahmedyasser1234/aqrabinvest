@@ -1,7 +1,8 @@
 .about {
-  padding: 1rem 0;
+  padding: 8rem 0 4rem 0;
   background: var(--white);
   overflow: hidden;
+  position: relative;
 }
 
 .about__title {

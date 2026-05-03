@@ -21,8 +21,6 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        
-        <SectionDivider type="dark-to-white" />
         <About />
         
         <SectionDivider type="white-to-dark" />

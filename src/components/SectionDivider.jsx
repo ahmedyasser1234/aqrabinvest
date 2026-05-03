@@ -2,7 +2,13 @@ import React from 'react'
 
 export const SectionDivider = ({ type = 'dark-to-white' }) => {
   const isDarkToWhite = type === 'dark-to-white'
+  const isHeroToWhite = type === 'hero-to-white'
+  const isWhiteToDark = type === 'white-to-dark'
   
+  // High overlap for hero section
+  const height = isHeroToWhite ? '180px' : '60px'
+  const top = isHeroToWhite ? '-179px' : '-59px'
+
   return (
     <div style={{ 
       height: '0', 
@@ -14,24 +20,29 @@ export const SectionDivider = ({ type = 'dark-to-white' }) => {
       {/* The main slanted cut */}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ 
         width: '100%', 
-        height: '60px', 
+        height: height, 
         position: 'absolute', 
-        top: '-59px', 
+        top: top, 
         left: 0,
         zIndex: 5
       }}>
-        <polygon 
-          points={isDarkToWhite ? "0,100 100,0 100,100" : "0,100 100,100 0,0"} 
-          fill={isDarkToWhite ? "var(--white)" : "var(--bg-dark)"} 
-        />
+        {isHeroToWhite ? (
+          // Custom slant for hero: Lower on the left, Higher on the right (matching other sections)
+          <polygon points="0,100 100,0 100,100" fill="var(--white)" />
+        ) : (
+          <polygon 
+            points={isDarkToWhite ? "0,100 100,0 100,100" : "0,100 100,100 0,0"} 
+            fill={isWhiteToDark ? "var(--bg-dark)" : "var(--white)"} 
+          />
+        )}
       </svg>
 
       {/* Architectural Geometric Patterns (Diamonds) */}
       <div style={{
         position: 'absolute',
-        top: '-40px',
-        left: isDarkToWhite ? '10%' : 'auto',
-        right: isDarkToWhite ? 'auto' : '10%',
+        top: isHeroToWhite ? '-140px' : '-40px',
+        left: (isDarkToWhite || isHeroToWhite) ? '10%' : 'auto',
+        right: (isDarkToWhite || isHeroToWhite) ? 'auto' : '10%',
         width: '40px',
         height: '40px',
         background: 'rgba(162, 221, 0, 0.15)',
@@ -42,9 +53,9 @@ export const SectionDivider = ({ type = 'dark-to-white' }) => {
 
       <div style={{
         position: 'absolute',
-        top: '-60px',
-        left: isDarkToWhite ? '15%' : 'auto',
-        right: isDarkToWhite ? 'auto' : '15%',
+        top: isHeroToWhite ? '-160px' : '-60px',
+        left: (isDarkToWhite || isHeroToWhite) ? '15%' : 'auto',
+        right: (isDarkToWhite || isHeroToWhite) ? 'auto' : '15%',
         width: '20px',
         height: '20px',
         background: 'rgba(162, 221, 0, 0.1)',
